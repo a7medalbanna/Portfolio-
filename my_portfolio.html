@@ -1,0 +1,623 @@
+
+html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض أعمال | خبير إعلانات ممولة وميديا باير محترف</title>
+    <meta name="description" content="معرض أعمالي كخبير في إدارة الحملات الإعلانية (ميديا باير) على منصات فيسبوك، جوجل، تيك توك وغيرها. متخصص في تحقيق أعلى عائد على الاستثمار (ROAS).">
+    <!-- Preload critical assets for faster loading -->
+    <link rel="preload" href="https://files.catbox.moe/vm6m17.otf" as="font" type="font/otf" crossorigin>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS Animation Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Custom font */
+        @font-face {
+            font-family: 'GE SS Two Medium';
+            src: url('https://files.catbox.moe/vm6m17.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap; /* Ensures text is visible while font loads */
+        }
+        body {
+            font-family: 'GE SS Two Medium', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(45deg, #06b6d4, #3b82f6); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(45deg, #0891b2, #2563eb); }
+        /* Modern gradient backgrounds */
+        .gradient-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%); }
+        .hero-gradient { background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 50%, rgba(51, 65, 85, 0.85) 100%); }
+        /* Animated gradient text */
+        .gradient-text {
+            background: linear-gradient(45deg, #06b6d4, #3b82f6, #8b5cf6, #06b6d4);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+        }
+        @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        /* Floating animation */
+        .float { animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        /* Pulse animation for buttons */
+        .pulse-glow { animation: pulseGlow 2s infinite; }
+        @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.3); } 50% { box-shadow: 0 0 40px rgba(6, 182, 212, 0.6); } }
+        /* Card hover effects */
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3); }
+        /* Skill bar animation */
+        .skill-bar { width: 0%; transition: width 2s ease-in-out; }
+        .skill-bar.animate { width: var(--skill-width); }
+        /* Typewriter effect */
+        .typewriter {
+            overflow: hidden;
+            border-left: 3px solid #06b6d4;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        @keyframes typing { from { width: 0; } to { width: 100%; } }
+        @keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: #06b6d4; } }
+        /* Loading spinner */
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid #06b6d4;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .counter { font-variant-numeric: tabular-nums; }
+        /* Styling for the image */
+        .profile-image {
+            border-radius: 50%; /* Circular shape */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); /* Strong shadow */
+            border: 4px solid rgba(6, 182, 212, 0.5); /* Cyan border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+            max-width: 300px; /* Adjust size */
+            height: auto;
+            margin: 0 auto; /* Center the image */
+        }
+        .profile-image:hover {
+            transform: scale(1.05); /* Slight scale on hover */
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
+        }
+    </style>
+</head>
+<body class="gradient-bg text-gray-200 overflow-x-hidden">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-slate-900 z-50 flex items-center justify-center transition-opacity duration-500">
+        <div class="text-center">
+            <div class="spinner mx-auto mb-4"></div>
+            <p class="text-cyan-400 text-lg">جاري التحميل...</p>
+        </div>
+    </div>
+    <!-- Header / Navigation Bar -->
+    <header id="header" class="bg-slate-900/90 backdrop-blur-md fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b border-slate-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold gradient-text tracking-wider">Ahmed Albanna</a>
+            <nav class="hidden md:flex items-center space-x-8 space-x-reverse">
+                <a href="#hero" class="nav-link text-gray-300 hover:text-cyan-400 transition-all duration-300 relative">الرئيسية</a>
+                <a href="#about" class="nav-link text-gray-300 hover:text-cyan-400 transition-all duration-300 relative">عني</a>
+                <a href="#experience" class="nav-link text-gray-300 hover:text-cyan-400 transition-all duration-300 relative">خبراتي</a>
+                <a href="#services" class="nav-link text-gray-300 hover:text-cyan-400 transition-all duration-300 relative">خدماتي</a>
+                <a href="#testimonials" class="nav-link text-gray-300 hover:text-cyan-400 transition-all duration-300 relative">آراء العملاء</a>
+                <a href="#portfolio" class="nav-link text-gray-300 hover:text-cyan-400 transition-all duration-300 relative">دراسة حالة</a>
+                <a href="#contact" class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold py-2 px-6 rounded-full transition-all duration-300 hover:scale-105 pulse-glow">اتصل بي</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <i data-feather="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-slate-900/95 backdrop-blur-sm">
+            <a href="#hero" class="block py-3 text-gray-300 hover:text-cyan-400 transition-colors">الرئيسية</a>
+            <a href="#about" class="block py-3 text-gray-300 hover:text-cyan-400 transition-colors">عني</a>
+            <a href="#experience" class="block py-3 text-gray-300 hover:text-cyan-400 transition-colors">خبراتي</a>
+            <a href="#services" class="block py-3 text-gray-300 hover:text-cyan-400 transition-colors">خدماتي</a>
+            <a href="#testimonials" class="block py-3 text-gray-300 hover:text-cyan-400 transition-colors">آراء العملاء</a>
+            <a href="#portfolio" class="block py-3 text-gray-300 hover:text-cyan-400 transition-colors">دراسة حالة</a>
+            <a href="#contact" class="block mt-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold py-3 px-6 rounded-full text-center">اتصل بي</a>
+        </div>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center justify-center bg-cover bg-center bg-fixed relative overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1974&auto=format&fit=crop');">
+            <div class="hero-gradient absolute inset-0"></div>
+            <div class="container mx-auto px-6 text-center z-10 pt-24">
+                <div class="float">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-4" data-aos="fade-up" data-aos-delay="200">
+                        ميديا باير محترف وشريكك <span class="gradient-text">لتحقيق النمو</span>
+                    </h1>
+                    <div class="typewriter text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-6" data-aos="fade-up" data-aos-delay="400">
+                        أُترجم ميزانيتك الإعلانية إلى أرباح حقيقية.
+                    </div>
+                    <p class="text-base md:text-lg text-gray-400 max-w-2xl mx-auto mb-8" data-aos="fade-up" data-aos-delay="600">
+                        أمتلك الخبرة في إطلاق وإدارة حملات إعلانية مربحة على منصات جوجل، ميتا، تيك توك، وسناب شات، مع التركيز على تحقيق أهدافك التجارية بأعلى كفاءة.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center" data-aos="fade-up" data-aos-delay="800">
+                        <a href="#portfolio" class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:scale-105 pulse-glow">شاهد دراسات الحالة</a>
+                        <a href="#contact" class="border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:scale-105">تواصل معي الآن</a>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <div class="w-6 h-10 border-2 border-cyan-400 rounded-full flex justify-center">
+                    <div class="w-1 h-3 bg-cyan-400 rounded-full mt-2 animate-pulse"></div>
+                </div>
+            </div>
+        </section>
+        <!-- Stats Section -->
+        <section class="py-16 bg-slate-800/50 backdrop-blur-sm">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="100"><div class="text-3xl md:text-4xl font-bold gradient-text counter" data-target="250">0</div><p class="text-gray-400 mt-2">حملة إعلانية ناجحة</p></div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="200"><div class="text-3xl md:text-4xl font-bold gradient-text counter" data-target="90">0</div><p class="text-gray-400 mt-2">عميل راضٍ</p></div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="300"><div class="text-3xl md:text-4xl font-bold gradient-text counter" data-target="5">0</div><p class="text-gray-400 mt-2">سنوات خبرة</p></div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="400"><div class="text-3xl md:text-4xl font-bold gradient-text counter" data-target="1000000">0</div><p class="text-gray-400 mt-2">إنفاق إعلاني مُدار</p></div>
+                </div>
+            </div>
+        </section>
+        <!-- About Me Section -->
+        <section id="about" class="py-8 md:py-16 bg-slate-900"> <!-- Reduced top padding here -->
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="md:col-span-1 flex flex-col items-center" data-aos="fade-right"> <!-- Center content -->
+                        <!-- Image Placeholder -->
+                        <img src="https://i.postimg.cc/L8r2d1GD/image.jpg" alt="Ahmed Albanna - Media Buyer" class="profile-image mb-8">
+                    </div>
+                    <div class="md:col-span-1" data-aos="fade-left">
+                         <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">مرحبا، أنا <span class="gradient-text">خبير إعلانات ممولة</span></h2>
+                        <p class="text-gray-400 mb-4 leading-relaxed text-lg">شغفي يكمن في تحليل البيانات وتحويلها إلى استراتيجيات إعلانية ناجحة. أنا لا أدير إعلانات فقط، بل أبني جسوراً بين علامتك التجارية وجمهورها المستهدف، وأحرص على أن كل دولار يُنفق يعود بأضعاف قيّمته.</p>
+                        <p class="text-gray-400 mb-8 leading-relaxed text-lg">مهمتي هي فهم تحدياتك وتحقيق أهدافك من خلال حملات إعلانية مُحكَمة، سواء كان هدفك زيادة المبيعات، جذب عملاء محتملين، أو تعزيز الوعي بعلامتك التجارية. دعنا نعمل معاً لتحقيق نتائج استثنائية.</p>
+                        <div class="space-y-4">
+                            <div class="skill-item"><div class="flex justify-between mb-2"><span class="text-cyan-400 font-semibold">Facebook & Instagram Ads</span><span class="text-gray-400">98%</span></div><div class="w-full bg-gray-700 rounded-full h-2"><div class="skill-bar bg-gradient-to-r from-cyan-500 to-blue-500 h-2 rounded-full" style="--skill-width: 98%;"></div></div></div>
+                            <div class="skill-item"><div class="flex justify-between mb-2"><span class="text-cyan-400 font-semibold">Google & YouTube Ads</span><span class="text-gray-400">95%</span></div><div class="w-full bg-gray-700 rounded-full h-2"><div class="skill-bar bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full" style="--skill-width: 95%;"></div></div></div>
+                            <div class="skill-item"><div class="flex justify-between mb-2"><span class="text-cyan-400 font-semibold">TikTok & Snapchat Ads</span><span class="text-gray-400">90%</span></div><div class="w-full bg-gray-700 rounded-full h-2"><div class="skill-bar bg-gradient-to-r from-green-500 to-teal-500 h-2 rounded-full" style="--skill-width: 90%;"></div></div></div>
+                            <div class="skill-item"><div class="flex justify-between mb-2"><span class="text-cyan-400 font-semibold">التحليل وإعداد التقارير</span><span class="text-gray-400">97%</span></div><div class="w-full bg-gray-700 rounded-full h-2"><div class="skill-bar bg-gradient-to-r from-orange-500 to-red-500 h-2 rounded-full" style="--skill-width: 97%;"></div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Experience Section -->
+         <section id="experience" class="py-20 md:py-32 bg-slate-800/50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-aos="fade-up">مسيرتي <span class="gradient-text">المهنية</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-lg" data-aos="fade-up" data-aos-delay="200">رحلة من التعلم المستمر، مواكبة التغيرات، وتحقيق نتائج تفوق التوقعات.</p>
+                </div>
+                <div class="max-w-4xl mx-auto">
+                    <div class="relative">
+                        <div class="absolute right-8 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-500 to-blue-500 rounded-full"></div>
+                        <div class="space-y-12">
+                            <div class="bg-gradient-to-r from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl card-hover relative" data-aos="fade-right">
+                                <div class="absolute -right-4 top-8 w-8 h-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full border-4 border-slate-900"></div>
+                                <h3 class="text-xl font-bold gradient-text mb-3">مدير حملات إعلانية أول | وكالة تسويق رقمي</h3>
+                                <p class="text-cyan-400 font-semibold mb-4">2023 - حتى الآن</p>
+                                <p class="text-gray-300 leading-relaxed">أقود فريقًا من خبراء الإعلانات لإدارة ميزانيات ضخمة لعملاء في مجالات متنوعة. مسؤول عن وضع الاستراتيجيات، وتحليل الأداء، وتحقيق نمو يصل إلى 300% في عائد الاستثمار الإعلاني.</p>
+                            </div>
+                            <div class="bg-gradient-to-r from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl card-hover relative" data-aos="fade-right" data-aos-delay="200">
+                                <div class="absolute -right-4 top-8 w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full border-4 border-slate-900"></div>
+                                <h3 class="text-xl font-bold gradient-text mb-3">خبير إعلانات ممولة مستقل</h3>
+                                <p class="text-purple-400 font-semibold mb-4">2021 - 2023</p>
+                                <p class="text-gray-300 leading-relaxed">عملت مع عشرات الشركات الناشئة والعلامات التجارية لمساعدتها على إطلاق حملاتها الأولى وتحقيق أهدافها. أدرت حملات بميزانيات تجاوزت 500 ألف دولار، مع تحقيق متوسط عائد على الإنفاق الإعلاني (ROAS) يبلغ 7x.</p>
+                            </div>
+                            <div class="bg-gradient-to-r from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl card-hover relative" data-aos="fade-right" data-aos-delay="400">
+                                <div class="absolute -right-4 top-8 w-8 h-8 bg-gradient-to-r from-green-500 to-teal-500 rounded-full border-4 border-slate-900"></div>
+                                <h3 class="text-xl font-bold gradient-text mb-3">متخصص تسويق رقمي</h3>
+                                <p class="text-green-400 font-semibold mb-4">2020 - 2021</p>
+                                <p class="text-gray-300 leading-relaxed">بداية مسيرتي كانت في عالم التسويق الرقمي الشامل، حيث اكتسبت خبرة في تحسين محركات البحث والتسويق عبر المحتوى، وهو ما منحني رؤية متكاملة ساعدتني على بناء حملات إعلانية أكثر فعالية ونجاحًا.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services Section -->
+        <section id="services" class="py-20 md:py-32 bg-slate-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16"><h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-aos="fade-up">كيف يمكنني <span class="gradient-text">مساعدتك؟</span></h2><p class="text-gray-400 max-w-2xl mx-auto text-lg" data-aos="fade-up" data-aos-delay="200">أقدم حلولاً متكاملة ومخصصة لتلبية احتياجات أعمالك الإعلانية وتحقيق أهدافك بكفاءة.</p></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl card-hover text-center" data-aos="fade-up" data-aos-delay="100"><div class="inline-block bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-400 p-4 rounded-full mb-6"><i data-feather="facebook" class="w-8 h-8"></i></div><h3 class="text-xl font-bold text-white mb-4">إدارة حملات ميتا (فيسبوك وانستجرام)</h3><p class="text-gray-400 leading-relaxed">من استهداف الجمهور الدقيق إلى تصميم الإعلانات الجذابة وتحليل النتائج، أضمن لك تحقيق أفضل أداء ممكن.</p></div>
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl card-hover text-center" data-aos="fade-up" data-aos-delay="200"><div class="inline-block bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-400 p-4 rounded-full mb-6"><i data-feather="search" class="w-8 h-8"></i></div><h3 class="text-xl font-bold text-white mb-4">إدارة حملات جوجل ويوتيوب</h3><p class="text-gray-400 leading-relaxed">أضع علامتك التجارية أمام العملاء في لحظة بحثهم عنك، عبر إعلانات البحث، الشبكة الإعلانية، ويوتيوب.</p></div>
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl card-hover text-center" data-aos="fade-up" data-aos-delay="300"><div class="inline-block bg-gradient-to-r from-green-500/20 to-teal-500/20 text-green-400 p-4 rounded-full mb-6"><i data-feather="smartphone" class="w-8 h-8"></i></div><h3 class="text-xl font-bold text-white mb-4">إعلانات تيك توك وسناب شات</h3><p class="text-gray-400 leading-relaxed">أساعدك في الوصول إلى الجيل الجديد من العملاء عبر حملات إبداعية ومبتكرة على أسرع المنصات نمواً.</p></div>
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl card-hover text-center" data-aos="fade-up" data-aos-delay="400"><div class="inline-block bg-gradient-to-r from-orange-500/20 to-red-500/20 text-orange-400 p-4 rounded-full mb-6"><i data-feather="target" class="w-8 h-8"></i></div><h3 class="text-xl font-bold text-white mb-4">بناء استراتيجيات إعلانية</h3><p class="text-gray-400 leading-relaxed">أقوم بتحليل السوق والمنافسين لوضع استراتيجية إعلانية شاملة تضمن لك التفوق وتحقيق أهدافك طويلة الأمد.</p></div>
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl card-hover text-center" data-aos="fade-up" data-aos-delay="500"><div class="inline-block bg-gradient-to-r from-blue-500/20 to-indigo-500/20 text-blue-400 p-4 rounded-full mb-6"><i data-feather="trending-up" class="w-8 h-8"></i></div><h3 class="text-xl font-bold text-white mb-4">تحسين أداء الحملات (Optimization)</h3><p class="text-gray-400 leading-relaxed">أقوم بمراقبة مستمرة لأداء حملاتك وإجراء اختبارات (A/B testing) لتحسينها بشكل دائم وخفض التكاليف وزيادة العائد.</p></div>
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl card-hover text-center" data-aos="fade-up" data-aos-delay="600"><div class="inline-block bg-gradient-to-r from-pink-500/20 to-rose-500/20 text-pink-400 p-4 rounded-full mb-6"><i data-feather="bar-chart-2" class="w-8 h-8"></i></div><h3 class="text-xl font-bold text-white mb-4">تحليل البيانات والتقارير</h3><p class="text-gray-400 leading-relaxed">أقدم لك تقارير واضحة ومفصلة توضح أداء حملاتك، مع توصيات قابلة للتنفيذ لاتخاذ قرارات أفضل في المستقبل.</p></div>
+                </div>
+            </div>
+        </section>
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 md:py-32 bg-slate-800/50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-aos="fade-up">آراء <span class="gradient-text">العملاء</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-lg" data-aos="fade-up" data-aos-delay="200">انظر ما يقوله عملائي عن تجربتهم في العمل معي.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl card-hover" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 flex items-center justify-center text-white font-bold mr-4">أ.م</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">أحمد محمد</h4>
+                                <p class="text-gray-400 text-sm">مالك متجر إلكتروني</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed">"بدأنا التعاون مع أحمد عندما كانت مبيعات متجرنا متوقفة. بعد شهر واحد فقط من إدارة الحملات، شاهدنا ارتفاعاً كبيراً في المبيعات وعائد الاستثمار. مهنية عالية ونتائج ملموسة."</p>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl card-hover" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold mr-4">ن.أ</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">نورا إبراهيم</h4>
+                                <p class="text-gray-400 text-sm">مديرة تسويق في شركة عقارات</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed">"استراتيجية أحمد في استهداف العملاء المحتملين كانت ممتازة. نجح في جذب جمهور مهتم فعلاً بمشروعنا العقاري بتكلفة أقل من المتوسط. أنصح بالتعامل معه."</p>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl card-hover" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-teal-500 flex items-center justify-center text-white font-bold mr-4">ك.س</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">Kareem Sayed</h4>
+                                <p class="text-gray-400 text-sm">App Developer</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed">"We launched our new mobile app with Ahmed, and he helped us achieve over 50,000 downloads in less than two months. His expertise in TikTok and Snapchat Ads was the key to our success."</p>
+                    </div>
+                     <!-- Testimonial 4 -->
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl card-hover" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-yellow-500 to-orange-500 flex items-center justify-center text-white font-bold mr-4">م.ع</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">مريم عادل</h4>
+                                <p class="text-gray-400 text-sm">مؤسسة متجر عطور</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed">"أحمد استطاع أن يفهم جمهور منتجاتي ويزيد من مبيعاتي بنسبة 250% خلال 3 أشهر. أسلوبه احترافي ودقيق."</p>
+                    </div>
+                    <!-- Testimonial 5 -->
+                    <div class="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl card-hover" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-red-500 to-rose-500 flex items-center justify-center text-white font-bold mr-4">س.خ</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">Sarah Khalil</h4>
+                                <p class="text-gray-400 text-sm">Brand Manager</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 leading-relaxed">"Ahmed's approach to our Google Ads campaign was data-driven and efficient. We saw a 40% decrease in cost per lead while maintaining the same quality. Highly recommended!"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 md:py-32 bg-slate-800/50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16"><h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-aos="fade-up">دراسات حالة <span class="gradient-text">ونتائج حقيقية</span></h2><p class="text-gray-400 max-w-2xl mx-auto text-lg" data-aos="fade-up" data-aos-delay="200">الأرقام لا تكذب. هنا بعض الأمثلة على النجاح الذي حققته مع عملائي.</p></div>
+                <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="300">
+                    <button class="portfolio-filter active bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-6 py-2 rounded-full font-semibold transition-all duration-300" data-filter="all">الكل</button>
+                    <button class="portfolio-filter bg-slate-700 text-gray-300 hover:bg-slate-600 px-6 py-2 rounded-full font-semibold transition-all duration-300" data-filter="ecommerce">تجارة إلكترونية</button>
+                    <button class="portfolio-filter bg-slate-700 text-gray-300 hover:bg-slate-600 px-6 py-2 rounded-full font-semibold transition-all duration-300" data-filter="real-estate">عقارات</button>
+                    <button class="portfolio-filter bg-slate-700 text-gray-300 hover:bg-slate-600 px-6 py-2 rounded-full font-semibold transition-all duration-300" data-filter="leads">جذب عملاء</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Case Study 1 -->
+                    <div class="portfolio-item ecommerce group bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl card-hover" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-xl font-bold text-white mb-4">زيادة مبيعات متجر أزياء</h3>
+                        <p class="text-gray-400 mb-6">حملة إعلانية مركزة على فيسبوك وانستجرام استهدفت جمهوراً جديداً وأعادت استهداف زوار الموقع.</p>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center bg-slate-700/50 p-3 rounded-lg"><span class="font-semibold text-cyan-400">العائد على الإنفاق (ROAS)</span><span class="text-2xl font-bold gradient-text">11x</span></div>
+                            <div class="flex justify-between items-center bg-slate-700/50 p-3 rounded-lg"><span class="font-semibold text-cyan-400">إجمالي الإنفاق</span><span class="text-lg font-bold text-white">25,000</span></div>
+                            <div class="flex justify-between items-center bg-slate-700/50 p-3 rounded-lg"><span class="font-semibold text-cyan-400">المنصة</span><span class="text-sm bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full">Meta</span></div>
+                        </div>
+                    </div>
+                    <!-- Case Study 2 -->
+                    <div class="portfolio-item real-estate group bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl card-hover" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-xl font-bold text-white mb-4">جذب مشترين لمشروع عقاري</h3>
+                        <p class="text-gray-400 mb-6">استراتيجية إعلانية على جوجل وفيسبوك لجذب عملاء محتملين (Leads) بجودة عالية للمشروع.</p>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center bg-slate-700/50 p-3 rounded-lg"><span class="font-semibold text-purple-400">عدد العملاء المحتملين</span><span class="text-2xl font-bold gradient-text">1,200+</span></div>
+                            <div class="flex justify-between items-center bg-slate-700/50 p-3 rounded-lg"><span class="font-semibold text-purple-400">تكلفة العميل (CPL)</span><span class="text-lg font-bold text-white">أقل بـ 40% من المتوسط</span></div>
+                             <div class="flex justify-between items-center bg-slate-700/50 p-3 rounded-lg"><span class="font-semibold text-purple-400">المنصة</span><span class="text-sm bg-red-500/20 text-red-300 px-3 py-1 rounded-full">Google</span></div>
+                        </div>
+                    </div>
+                    <!-- Case Study 3 -->
+                    <div class="portfolio-item leads group bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl card-hover" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="text-xl font-bold text-white mb-4">إطلاق تطبيق موبايل جديد</h3>
+                        <p class="text-gray-400 mb-6">حملات إعلانية على تيك توك وسناب شات لزيادة عدد تحميلات التطبيق بتكلفة منخفضة في فترة الإطلاق.</p>
+                         <div class="space-y-4">
+                            <div class="flex justify-between items-center bg-slate-700/50 p-3 rounded-lg"><span class="font-semibold text-green-400">عدد التحميلات</span><span class="text-2xl font-bold gradient-text">50,000</span></div>
+                            <div class="flex justify-between items-center bg-slate-700/50 p-3 rounded-lg"><span class="font-semibold text-green-400">تكلفة التحميل (CPI)</span><span class="text-lg font-bold text-white">0.35</span></div>
+                            <div class="flex justify-between items-center bg-slate-700/50 p-3 rounded-lg"><span class="font-semibold text-green-400">المنصة</span><span class="text-sm bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full">TikTok</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32 bg-slate-800/50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16"><h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-aos="fade-up">هل أنت مستعد <span class="gradient-text">لتحقيق النمو؟</span></h2><p class="text-gray-400 max-w-2xl mx-auto text-lg" data-aos="fade-up" data-aos-delay="200">اتصل بي مباشرة أو املأ النموذج.</p></div>
+                <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                    <div data-aos="fade-right">
+                        <h3 class="text-2xl font-bold text-white mb-8">معلومات التواصل</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center ml-4">
+                                    <i data-feather="mail" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold">البريد الإلكتروني</h4>
+                                    <a href="mailto:a7medalbanna9@gmail.com" class="text-gray-400 hover:text-cyan-400 transition-colors">a7medalbanna9@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center ml-4">
+                                    <i data-feather="phone" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold">رقم الهاتف</h4>
+                                    <a href="tel:+201507539671" class="text-gray-400 hover:text-green-400 transition-colors font-semibold" dir="ltr">+201507539671</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-r from-green-600 to-emerald-500 rounded-full flex items-center justify-center ml-4">
+                                    <i data-feather="message-circle" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold">واتساب</h4>
+                                    <a href="https://wa.me/message/RNWNAZXPTWBPO1?src=qr" target="_blank" class="text-gray-400 hover:text-green-400 transition-colors font-semibold">ابدأ المحادثة</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center ml-4">
+                                    <i data-feather="map-pin" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold">الموقع</h4>
+                                    <p class="text-gray-400">محافظة المنوفية، مصر</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos="fade-left">
+                        <form id="contact-form" action="https://formspree.io/f/mjkazwnv" method="POST" class="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-2xl shadow-2xl">
+                            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label class="block text-gray-300 font-semibold mb-2">الاسم</label>
+                                    <input type="text" name="name" class="w-full bg-slate-600 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all duration-300" placeholder="اسمك الكامل" required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-300 font-semibold mb-2">البريد الإلكتروني</label>
+                                    <input type="email" name="email" class="w-full bg-slate-600 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all duration-300" placeholder="بريدك الإلكتروني" required>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-300 font-semibold mb-2">الموضوع</label>
+                                <input type="text" name="subject" class="w-full bg-slate-600 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all duration-300" placeholder="مثال: استشارة بخصوص حملة إعلانية">
+                            </div>
+                            <div class="mb-8">
+                                <label class="block text-gray-300 font-semibold mb-2">الرسالة</label>
+                                <textarea rows="5" name="message" class="w-full bg-slate-600 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all duration-300 resize-none" placeholder="أخبرني عن مشروعك وأهدافك..." required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 hover:scale-105 pulse-glow">إرسال الرسالة</button>
+                            <p id="form-status" class="text-center mt-4"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-slate-900 py-12 border-t border-slate-800">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold gradient-text mb-4">Ahmed Albanna</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        خبير إعلانات ممولة وشريكك الاستراتيجي لتحقيق نمو مستدام من خلال حملات إعلانية مربحة وموجهة.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-cyan-400 transition-colors">عني</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-cyan-400 transition-colors">خدماتي</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-cyan-400 transition-colors">آراء العملاء</a></li>
+                        <li><a href="#portfolio" class="text-gray-400 hover:text-cyan-400 transition-colors">دراسة حالة</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-cyan-400 transition-colors">تواصل معي</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">روابط خارجية</h4>
+                    <ul class="space-y-2">
+                        <li><a href="https://www.linkedin.com/in/a7med-albanna" target="_blank" class="text-gray-400 hover:text-cyan-400 transition-colors flex items-center">
+                            <i data-feather="linkedin" class="w-4 h-4 mr-2"></i> LinkedIn
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2025 Ahmed Albanna. جميع الحقوق محفوظة.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 left-8 w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full shadow-lg hover:scale-110 transition-all duration-300 opacity-0 invisible">
+        <i data-feather="arrow-up" class="w-6 h-6 mx-auto"></i>
+    </button>
+    <!-- Scripts are deferred for better performance -->
+    <script src="https://unpkg.com/feather-icons" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initialize Feather Icons
+        feather.replace();
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        // Loading screen
+        const loadingScreen = document.getElementById('loading-screen');
+        setTimeout(() => {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        }, 500);
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('bg-slate-900/95');
+            } else {
+                header.classList.remove('bg-slate-900/95');
+            }
+        }, { passive: true });
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+                 // Close mobile menu on link click
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        // Stats counter animation
+        const animateCounters = () => {
+            document.querySelectorAll('.counter').forEach(counter => {
+                const target = +counter.dataset.target;
+                counter.innerText = '0'; // Reset counter
+                const updateCount = () => {
+                    const current = +counter.innerText;
+                    const increment = Math.max(1, Math.ceil(target / 100));
+                    if (current < target) {
+                        counter.innerText = `${Math.min(target, current + increment)}`;
+                        setTimeout(updateCount, 15);
+                    } else {
+                        // Format large numbers
+                        if (target >= 1000000) {
+                            counter.innerText = `${(target / 1000000).toFixed(1)}M+`;
+                        } else if (target >= 1000) {
+                             counter.innerText = `${(target / 1000)}k+`;
+                        } else {
+                            counter.innerText = target;
+                        }
+                    }
+                };
+                updateCount();
+            });
+        };
+        // Skill bars animation
+        const animateSkillBars = () => {
+            document.querySelectorAll('.skill-bar').forEach(bar => bar.classList.add('animate'));
+        };
+        let statsAnimated = false;
+        let skillsAnimated = false;
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('stat-item') && !statsAnimated) {
+                        animateCounters();
+                        statsAnimated = true; 
+                    }
+                    if (entry.target.id === 'about' && !skillsAnimated) {
+                        animateSkillBars();
+                        skillsAnimated = true;
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.stat-item').forEach(el => observer.observe(el));
+        const aboutSection = document.getElementById('about');
+        if (aboutSection) observer.observe(aboutSection);
+        // Portfolio filter
+        const filterButtons = document.querySelectorAll('.portfolio-filter');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const filter = this.dataset.filter;
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active', 'bg-gradient-to-r', 'from-cyan-500', 'to-blue-500', 'text-white');
+                    btn.classList.add('bg-slate-700', 'text-gray-300');
+                });
+                this.classList.add('active', 'bg-gradient-to-r', 'from-cyan-500', 'to-blue-500', 'text-white');
+                this.classList.remove('bg-slate-700', 'text-gray-300');
+                portfolioItems.forEach(item => {
+                    item.style.transition = 'all 0.3s ease';
+                    if (filter === 'all' || item.classList.contains(filter)) {
+                        item.style.display = 'block';
+                        setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; }, 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => { item.style.display = 'none'; }, 300);
+                    }
+                });
+            });
+        });
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+            } else {
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        }, { passive: true });
+        backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        // Contact Form Submission (Formspree Integration)
+        const form = document.getElementById("contact-form");
+        const status = document.getElementById("form-status");
+        form.addEventListener("submit", (event) => {
+            event.preventDefault(); // Prevent default form submission
+            status.innerHTML = "جاري إرسال الرسالة...";
+            status.classList.remove('text-red-400', 'text-green-400');
+            // Submit form to Formspree
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    status.innerHTML = "شكراً لك! تم إرسال رسالتك بنجاح.";
+                    status.classList.add('text-green-400');
+                    form.reset(); // Reset form on success
+                } else {
+                    status.innerHTML = "عذراً، حدث خطأ. يرجى المحاولة مرة أخرى.";
+                    status.classList.add('text-red-400');
+                }
+            }).catch(error => {
+                status.innerHTML = "عذراً، حدث خطأ في الاتصال. يرجى المحاولة مرة أخرى.";
+                status.classList.add('text-red-400');
+            });
+        });
+    });
+    </script>
+</body>
+</html>
